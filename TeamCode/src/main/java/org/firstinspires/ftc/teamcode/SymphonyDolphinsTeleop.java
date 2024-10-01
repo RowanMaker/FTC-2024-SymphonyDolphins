@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 // defining motors
 @TeleOp
-public class SymphonyDolphins extends LinearOpMode {
+public class SymphonyDolphinsT extends LinearOpMode {
     private DcMotor insertMotorNameHere; // port location
 
     private Servo insertServoNameHere;
