@@ -77,12 +77,12 @@ public class SymphonyDolphinsT extends LinearOpMode {
             LY = gamepad1.left_stick_y * -1;
             RX = gamepad1.right_stick_x;
             RY = gamepad1.right_stick_y * -1;
-            // triggers
-            LT = gamepad1.left_trigger;
-            RT = gamepad1.right_trigger;
             // bumpers
             LB = gamepad1.left_bumper;
             RB = gamepad1.right_bumper;
+            // triggers
+            LT = gamepad1.left_trigger;
+            RT = gamepad1.right_trigger;
             // letter buttons
             X = gamepad1.x;
             Y = gamepad1.y;
@@ -93,6 +93,42 @@ public class SymphonyDolphinsT extends LinearOpMode {
             DD = gamepad1.dpad_down;
             DL = gamepad1.dpad_left;
             DR = gamepad1.dpad_right;
+
+        // speed changes
+            // right bumper - increase speed by 0.2
+            if(RB == true && RBhasbeenpressed == false){
+                RBhasbeenpressed = true;
+                speed = speed + 0.2;
+            }
+            if(RB == false){
+                RBhasbeenpressed = false;
+
+            }
+            // left bumper - decrease speed by 0.2
+            if(LB == true && LBhasbeenpressed == false){
+                LBhasbeenpressed = true;
+                speed = speed - 0.2;
+            }
+            if(LB == false){
+                LBhasbeenpressed = false;
+            }
+
+            //Defining the min and max of the variable speed
+            speed = Math.min(speed, 1);
+            speed = Math.max(speed, 0);
+
+            //rounds to legible numbers
+            speed = (int)(speed * 10) / 10.0;
+
+            //Modular speed control for the movement joysticks on the controller
+            frontleftMotor.setPower((LY + RX + LX) * speed);
+            frontrightMotor.setPower((LY - RX - LX) * speed);
+            backleftMotor.setPower((LY + RX - LX) * speed);
+            backrightMotor.setPower((LY - RX + LX) * speed);
+
+            // displays speed data on the driver hub
+            telemetry.addData("Speed: ", speed);
+            telemetry.update();
 
         }
     }
