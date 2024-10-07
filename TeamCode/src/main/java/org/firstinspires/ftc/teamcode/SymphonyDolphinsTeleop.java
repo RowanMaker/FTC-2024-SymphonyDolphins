@@ -8,20 +8,19 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-// defining motors
 @TeleOp
-public class SymphonyDolphinsT extends LinearOpMode {
+public class SymphonyDolphinsTeleOp extends LinearOpMode{
+    // defining motors
     private DcMotor backleftMotor; // port 0
     private DcMotor frontleftMotor; // port 1
     private DcMotor backrightMotor; // port 2
     private DcMotor frontrightMotor; // port 3
 
 
-    //private Servo insertServoNameHere;
+    //private Servo insertServoNameHere; // servo port location
     //private CRServo insertLinActNameHere; //servo port location
 
  // start of OpMode
-    @Override
     public void runOpMode () {
         backleftMotor = hardwareMap.dcMotor.get("leftBackDrive");
         frontleftMotor = hardwareMap.dcMotor.get("leftFrontDrive");
@@ -66,7 +65,8 @@ public class SymphonyDolphinsT extends LinearOpMode {
 
  // configure motors- reverse motors to simplify coding
     backleftMotor.setDirection(DcMotor.Direction.REVERSE);
-    backrightMotor.setDirection(Servo.Direction.REVERSE);
+    backrightMotor.setDirection(DcMotor.Direction.REVERSE);
+    //backservo.setDirection(Servo.Direction.REVERSE);
 
  // Official start of code
         waitForStart();
@@ -129,7 +129,6 @@ public class SymphonyDolphinsT extends LinearOpMode {
             // displays speed data on the driver hub
             telemetry.addData("Speed: ", speed);
             telemetry.update();
-
-        }
+        }  
     }
 }
