@@ -62,7 +62,9 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         boolean LBhasbeenpressed = false;
 
         double speed = 1;
-
+        
+    // reverse directions of motors to simplify coding
+    frontleftMotor.setDirection(DcMotor.Direction.REVERSE);
     //backservo.setDirection(Servo.Direction.REVERSE);
 
  // Official start of code
