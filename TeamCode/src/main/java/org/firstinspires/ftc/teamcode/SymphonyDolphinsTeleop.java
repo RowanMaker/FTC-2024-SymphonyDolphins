@@ -65,6 +65,7 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         
     // reverse directions of motors to simplify coding
     frontleftMotor.setDirection(DcMotor.Direction.REVERSE);
+    backleftMotor.setDirection(DcMotor.Direction.REVERSE);
     //backservo.setDirection(Servo.Direction.REVERSE);
 
  // Official start of code
