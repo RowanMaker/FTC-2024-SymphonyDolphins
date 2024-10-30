@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.quelcomm.robotcore.eventloop.opmode.TeleOp;
+import com.quelcomm.robotcore.eventloop.opmode.Autonomous;
 
-@TeleOp
+@Autonomous
 public class aprilTags extends LinearOpMode {
 
     @Override
