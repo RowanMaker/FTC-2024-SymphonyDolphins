@@ -15,10 +15,12 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
     private DcMotor frontleftMotor; // port 1
     private DcMotor backrightMotor; // port 2
     private DcMotor frontrightMotor; // port 3
-
-
-    //private Servo insertServoNameHere; // servo port location
-    //private CRServo insertLinActNameHere; //servo port location
+    // defining manipulator motors
+    private DcMotor linActMotor; // port ??
+    private DcMotor ShoulderMotor; // port ??
+    // defining servos
+    private Servo wristServo; // port ??
+    private Servo clawServo; // port ??
 
  // start of OpMode
     public void runOpMode () {
@@ -26,9 +28,12 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         frontleftMotor = hardwareMap.dcMotor.get("leftFrontDrive");
         backrightMotor = hardwareMap.dcMotor.get("backRightDrive");
         frontrightMotor = hardwareMap.dcMotor.get("frontRightDrive");
-
-        //insertServoNameHere = hardwareMap.get(Servo.class, "servoName");
-        //insertLinActNameHere = hardwareMap.get(CRServo.class, "LinAct");
+        
+        linActMotor = hardwareMap.dcMotor.get("linAct");
+        ShoulderMotor = hardwareMap.dcMotor.get("shoulder");
+        
+        wristServo = hardwareMap.get(Servo.class, "wrist");
+        clawServo = hardwareMap.get(Servo.class, "claw");
 
   // Defining controller methods
         // left and right sticks (x and y axies)
@@ -112,6 +117,22 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             if(LB == false){
                 LBhasbeenpressed = false;
             }
+
+            // Defining X,B - shoulder up/down
+            if(X == true){
+                
+            }
+            // Defining Y,A - open/close claw
+            if(Y == true){
+                
+            }
+
+            // Defining DU/DD on the D pad- wrist up/down
+            if (DU == true){
+                
+            }
+            // Defining LT and RT - lin act up/down
+            
 
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
