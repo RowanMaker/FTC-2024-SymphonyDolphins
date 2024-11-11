@@ -136,18 +136,22 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 // lin act down
                 linAct.setPower(-0.5);
             }
-            // Defining Y,A - open/close claw
-            if(Y == true){
-                
-            }
-
             // Defining DU/DD on the D pad- wrist up/down
-            if (DU == true){
-                
+            // set position
+            if (DU == true){  
+                // wrist up
             }
-
-            
-
+            if (DD == true){    
+                // wrist down
+            }
+            // Defining Y,A - open/close claw
+            // set position
+            if(Y == true){ 
+                // claw open
+            }
+            if(A == true){ 
+                // claw close
+            }
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
             speed = Math.max(speed, 0);
