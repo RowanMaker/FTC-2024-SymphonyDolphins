@@ -118,10 +118,23 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 LBhasbeenpressed = false;
             }
 
-            // Defining X,B - shoulder up/down
+            // Defining B,X - shoulder up/down
+            if (B == true){
+                // shoulder up
+                shoulder.setPower(0.2);
+            }
             if(X == true){
-                // b up x down
-                
+                // shoulder down
+                shoulder.setPower(-0.2);     
+            }
+            // Defining LT and RT - lin act up/down
+            if (RT == true){
+                // lin act up
+                linAct.setPower(0.5);
+            }
+            if (LT == true){
+                // lin act down
+                linAct.setPower(-0.5);
             }
             // Defining Y,A - open/close claw
             if(Y == true){
@@ -132,7 +145,7 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             if (DU == true){
                 
             }
-            // Defining LT and RT - lin act up/down
+
             
 
             //Defining the min and max of the variable speed
