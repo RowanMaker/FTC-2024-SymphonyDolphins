@@ -120,6 +120,7 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
 
             // Defining X,B - shoulder up/down
             if(X == true){
+                // b up x down
                 
             }
             // Defining Y,A - open/close claw
