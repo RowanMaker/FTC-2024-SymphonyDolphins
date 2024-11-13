@@ -43,8 +43,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         double RY;
 
         // T triggers
-        double LT;
-        double RT;
+        boolean LT;
+        boolean RT;
 
         // B bumpers
         boolean LB;
@@ -107,7 +107,6 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             }
             if(RB == false){
                 RBhasbeenpressed = false;
-
             }
             // left bumper - decrease speed by 0.2
             if(LB == true && LBhasbeenpressed == false){
@@ -121,40 +120,40 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             // Defining B,X - shoulder up/down
             if (B == true){
                 // shoulder up
-                shoulder.setPower(0.2);
+                ShoulderMotor.setPower(0.2);
             }
             if(X == true){
                 // shoulder down
-                shoulder.setPower(-0.2);     
+                ShoulderMotor.setPower(-0.2);     
             }
             // Defining LT and RT - lin act up/down
             if (RT == true){
                 // lin act up
-                linAct.setPower(0.1);
+                linActMotor.setPower(0.1);
             }
             if (LT == true){
                 // lin act down
-                linAct.setPower(-0.1);
+                linActMotor.setPower(-0.1);
             }
             // Defining DU/DD on the D pad- wrist up/down
             // set position
             if (DU == true){  
                 // wrist up
-                wrist.setPower(-0.2);
+                wristServo.setPower(-0.2);
             }
             if (DD == true){    
                 // wrist down
-                wrist.setPower(0.2);
+                wristServo.setPower(0.2);
             }
             // Defining Y,A - open/close claw
             // set position
             if(Y == true){ 
                 // claw open
-                claw.setPower(0.2);
+                clawServo.setPower(0.2);
             }
             if(A == true){ 
                 // claw close
-                claw.setPower(0.2);
+                clawServo.setPower(0.2);
             }
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
@@ -176,5 +175,4 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             
         }
     }
-
 }
