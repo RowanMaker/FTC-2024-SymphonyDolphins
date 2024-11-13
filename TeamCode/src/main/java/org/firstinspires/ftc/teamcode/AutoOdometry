@@ -1,1 +1,36 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+
+public class AutoOdometry {
+  // constants
+  public static final Double TRIGGER_THRESHOLD = 0.5; // gamepad trigger
+
+  // drive base motors
+  public DcMotor frontrightMotor; // port 0
+  public DcMotor backrightMotor; // port 1
+  public DcMotor backleftMotor; // port 2
+  public DcMotor frontleftMotor; // port 3
+
+  // manipulator motors/servos 
+  public DcMotor linActMotor; // port 1
+  public DcMotor ShoulderMotor; // port 0
+  public Servo wristServo; // port ??
+  public Servo clawServo; // port ??
+
+  // odometers
+  public DcMotor encoderLeft;
+  public DcMotor encoderRight;
+  public DcMotor encoderAux;
+
+  private HardwareMap hardwareMap;
+  
+
+
+
+
 
