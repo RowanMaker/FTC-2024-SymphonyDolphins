@@ -10,14 +10,14 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp
 public class SymphonyDolphinsTeleOp extends LinearOpMode {
-    // defining motors
+    // defining motors (servo ports)
     private DcMotor backleftMotor; // port 0
     private DcMotor frontleftMotor; // port 1
     private DcMotor backrightMotor; // port 2
     private DcMotor frontrightMotor; // port 3
-    // defining manipulator motors
-    private DcMotor linActMotor; // port ??
-    private DcMotor ShoulderMotor; // port ??
+    // defining manipulator motors (motor ports)
+    private DcMotor linActMotor; // port 1
+    private DcMotor ShoulderMotor; // port 0
     // defining servos
     private Servo wristServo; // port ??
     private Servo clawServo; // port ??
