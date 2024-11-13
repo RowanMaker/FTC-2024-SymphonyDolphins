@@ -130,11 +130,11 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             // Defining LT and RT - lin act up/down
             if (RT == true){
                 // lin act up
-                linAct.setPower(0.5);
+                linAct.setPower(0.1);
             }
             if (LT == true){
                 // lin act down
-                linAct.setPower(-0.5);
+                linAct.setPower(-0.1);
             }
             // Defining DU/DD on the D pad- wrist up/down
             // set position
