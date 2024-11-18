@@ -125,6 +125,10 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 // shoulder down
                 ShoulderMotor.setPower(-0.8);     
             }
+            else {
+                // if button is not held down shoulder stops moving
+                ShoulderMotor.setPower(0);
+            }
             // Defining LT and RT - lin act up/down
             if (RT > 0){
                 // lin act up
