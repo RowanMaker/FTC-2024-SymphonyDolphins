@@ -32,8 +32,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         linActMotor = hardwareMap.dcMotor.get("linAct");
         ShoulderMotor = hardwareMap.dcMotor.get("shoulder");
         
-        //wristServo = hardwareMap.get(Servo.class, "wrist");
-        //clawServo = hardwareMap.get(Servo.class, "claw");
+        wristServo = hardwareMap.get(Servo.class, "wrist");
+        clawServo = hardwareMap.get(Servo.class, "claw");
 
   // Defining controller methods
         // left and right sticks (x and y axies)
@@ -135,8 +135,6 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 linActMotor.setPower(-0.1);
             }
             
-            // wrist and claw are commented out until further notice
-            /* 
             // Defining DU/DD on the D pad- wrist up/down
             // set position
             if (DU == true){  
@@ -157,7 +155,6 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 // claw close
                 clawServo.setPosition(-0.2);
             }
-            */ 
             
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
