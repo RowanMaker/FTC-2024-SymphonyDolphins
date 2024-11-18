@@ -43,8 +43,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         double RY;
 
         // T triggers
-        boolean LT;
-        boolean RT;
+        float LT;
+        float RT;
 
         // B bumpers
         boolean LB;
@@ -127,11 +127,11 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 ShoulderMotor.setPower(-0.2);     
             }
             // Defining LT and RT - lin act up/down
-            if (RT == true){
+            if (RT > 0){
                 // lin act up
                 linActMotor.setPower(0.1);
             }
-            if (LT == true){
+            if (LT > 0){
                 // lin act down
                 linActMotor.setPower(-0.1);
             }
@@ -139,21 +139,21 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             // set position
             if (DU == true){  
                 // wrist up
-                wristServo.setPower(-0.2);
+                wristServo.setPosition(-0.2);
             }
             if (DD == true){    
                 // wrist down
-                wristServo.setPower(0.2);
+                wristServo.setPosition(0.2);
             }
             // Defining Y,A - open/close claw
             // set position
             if(Y == true){ 
                 // claw open
-                clawServo.setPower(0.2);
+                clawServo.setPosition(0.2);
             }
             if(A == true){ 
                 // claw close
-                clawServo.setPower(0.2);
+                clawServo.setPosition(-0.2);
             }
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
@@ -170,9 +170,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
 
             // displays speed data on the driver hub
             telemetry.addData("Speed: ", speed);
-            telemetry.update();
-
-            
+            telemetry.update();      
         }
     }
+
 }
