@@ -19,8 +19,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
     private DcMotor linActMotor; // port 1
     private DcMotor ShoulderMotor; // port 0
     // defining servos
-    private Servo wristServo; // port ??
-    private Servo clawServo; // port ??
+    private Servo wristServo; // port 4
+    private Servo clawServo; // port 5
 
  // start of OpMode
     public void runOpMode () {
