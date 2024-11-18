@@ -11,10 +11,10 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @TeleOp
 public class SymphonyDolphinsTeleOp extends LinearOpMode {
     // defining motors (servo ports)
-    private DcMotor backleftMotor; // port 0
-    private DcMotor frontleftMotor; // port 1
-    private DcMotor backrightMotor; // port 2
-    private DcMotor frontrightMotor; // port 3
+    private Servo backleftMotor; // port 0
+    private Servo frontleftMotor; // port 1
+    private Servo backrightMotor; // port 2
+    private Servo frontrightMotor; // port 3
     // defining manipulator motors (motor ports)
     private DcMotor linActMotor; // port 1
     private DcMotor ShoulderMotor; // port 0
@@ -24,10 +24,10 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
 
  // start of OpMode
     public void runOpMode () {
-        backleftMotor = hardwareMap.dcMotor.get("leftBackDrive");
-        frontleftMotor = hardwareMap.dcMotor.get("leftFrontDrive");
-        backrightMotor = hardwareMap.dcMotor.get("backRightDrive");
-        frontrightMotor = hardwareMap.dcMotor.get("frontRightDrive");
+        backleftMotor = hardwareMap.get(Servo.class, "leftBackDrive");
+        frontleftMotor = hardwareMap.get(Servo.class, "leftFrontDrive");
+        backrightMotor = hardwareMap.get(Servo.class, "rightBackDrive");
+        frontrightMotor = hardwareMap.get(Servo.class, "rightFrontDrive");
         
         linActMotor = hardwareMap.dcMotor.get("linAct");
         ShoulderMotor = hardwareMap.dcMotor.get("shoulder");
@@ -69,8 +69,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         double speed = 1;
         
     // reverse directions of motors to simplify coding
-    frontleftMotor.setDirection(DcMotor.Direction.REVERSE);
-    backleftMotor.setDirection(DcMotor.Direction.REVERSE);
+    frontleftMotor.setDirection(Servo.Direction.REVERSE);
+    backleftMotor.setDirection(Servo.Direction.REVERSE);
     //backservo.setDirection(Servo.Direction.REVERSE);
 
  // Official start of code
