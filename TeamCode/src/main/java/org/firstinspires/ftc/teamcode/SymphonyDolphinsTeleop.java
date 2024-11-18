@@ -11,10 +11,10 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @TeleOp
 public class SymphonyDolphinsTeleOp extends LinearOpMode {
     // defining motors (servo ports)
-    private Servo backleftMotor; // port 0
-    private Servo frontleftMotor; // port 1
-    private Servo backrightMotor; // port 2
-    private Servo frontrightMotor; // port 3
+    private CRServo backleftMotor; // port 0
+    private CRServo frontleftMotor; // port 1
+    private CRServo backrightMotor; // port 2
+    private CRServo frontrightMotor; // port 3
     // defining manipulator motors (motor ports)
     private DcMotor linActMotor; // port 1
     private DcMotor ShoulderMotor; // port 0
@@ -24,10 +24,10 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
 
  // start of OpMode
     public void runOpMode () {
-        backleftMotor = hardwareMap.get(Servo.class, "leftBackDrive");
-        frontleftMotor = hardwareMap.get(Servo.class, "leftFrontDrive");
-        backrightMotor = hardwareMap.get(Servo.class, "rightBackDrive");
-        frontrightMotor = hardwareMap.get(Servo.class, "rightFrontDrive");
+        backleftMotor = hardwareMap.get(CRServo.class, "leftBackDrive");
+        frontleftMotor = hardwareMap.get(CRServo.class, "leftFrontDrive");
+        backrightMotor = hardwareMap.get(CRServo.class, "rightBackDrive");
+        frontrightMotor = hardwareMap.get(CRServo.class, "rightFrontDrive");
         
         linActMotor = hardwareMap.dcMotor.get("linAct");
         ShoulderMotor = hardwareMap.dcMotor.get("shoulder");
@@ -69,9 +69,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         double speed = 1;
         
     // reverse directions of motors to simplify coding
-    frontleftMotor.setDirection(Servo.Direction.REVERSE);
-    backleftMotor.setDirection(Servo.Direction.REVERSE);
-    //backservo.setDirection(Servo.Direction.REVERSE);
+    frontleftMotor.setDirection(CRServo.Direction.REVERSE);
+    backleftMotor.setDirection(CRServo.Direction.REVERSE);
 
  // Official start of code
         waitForStart();
