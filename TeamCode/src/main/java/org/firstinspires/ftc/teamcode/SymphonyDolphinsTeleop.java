@@ -29,8 +29,8 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         backrightMotor = hardwareMap.get(CRServo.class, "rightBackDrive");
         frontrightMotor = hardwareMap.get(CRServo.class, "rightFrontDrive");
         
-        linActMotor = hardwareMap.dcMotor.get("linAct");
-        ShoulderMotor = hardwareMap.dcMotor.get("shoulder");
+        linActMotor = hardwareMap.get(DcMotor.class, "linAct");
+        ShoulderMotor = hardwareMap.get(DcMotor.class, "shoulder");
         
         wristServo = hardwareMap.get(Servo.class, "wrist");
         clawServo = hardwareMap.get(Servo.class, "claw");
@@ -116,42 +116,47 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 LBhasbeenpressed = false;
             }
 
-            // Defining B,X - shoulder up/down
-            if (B == true){
+            // Defining Y,A - shoulder up/down
+            if (Y == true){
                 // shoulder up
-                ShoulderMotor.setPower(0.2);
+                ShoulderMotor.setPower(0.8);
             }
-            if(X == true){
+            if(A == true){
                 // shoulder down
-                ShoulderMotor.setPower(-0.2);     
+                ShoulderMotor.setPower(-0.8);     
             }
             // Defining LT and RT - lin act up/down
             if (RT > 0){
                 // lin act up
-                linActMotor.setPower(0.1);
+                linActMotor.setPower(0.8);
             }
             if (LT > 0){
                 // lin act down
-                linActMotor.setPower(-0.1);
+                linActMotor.setPower(-0.8);
+            }
+            else
+            {
+                // if button is not held down lin act stops moving
+                linActMotor.setPower(0);
             }
             
             // Defining DU/DD on the D pad- wrist up/down
             // set position
             if (DU == true){  
                 // wrist up
-                wristServo.setPosition(-0.2);
+                wristServo.setPosition(-0.1);
             }
             if (DD == true){    
                 // wrist down
-                wristServo.setPosition(0.2);
+                wristServo.setPosition(0.1);
             }
-            // Defining Y,A - open/close claw
+            // Defining X,B - open/close claw
             // set position
-            if(Y == true){ 
+            if(X == true){ 
                 // claw open
                 clawServo.setPosition(0.2);
             }
-            if(A == true){ 
+            if(B == true){ 
                 // claw close
                 clawServo.setPosition(-0.2);
             }
