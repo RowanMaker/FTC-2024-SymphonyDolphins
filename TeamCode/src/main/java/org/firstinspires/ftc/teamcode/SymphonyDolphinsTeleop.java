@@ -148,11 +148,11 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             // set position
             if (DU == true){  
                 // wrist up
-                wristServo.setPosition(-0.1);
+                wristServo.setPosition(0.5);
             }
             if (DD == true){    
                 // wrist down
-                wristServo.setPosition(0.1);
+                wristServo.setPosition(-0.5);
             }
             // Defining X,B - open/close claw
             // set position
