@@ -117,11 +117,11 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             }
 
             // Defining Y,A - shoulder up/down
-            if (Y == true){
+            if (A == true){
                 // shoulder up
                 ShoulderMotor.setPower(0.8);
             }
-            if(A == true){
+            if(Y == true){
                 // shoulder down
                 ShoulderMotor.setPower(-0.8);     
             }
