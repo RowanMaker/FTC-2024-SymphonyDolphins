@@ -152,17 +152,17 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             }
             if (DD == true){    
                 // wrist down
-                wristServo.setPosition(-0.5);
+                wristServo.setPosition(0.2);
             }
             // Defining X,B - open/close claw
             // set position
             if(X == true){ 
                 // claw open
-                clawServo.setPosition(0.2);
+                clawServo.setPosition(0.1);
             }
             if(B == true){ 
                 // claw close
-                clawServo.setPosition(-0.2);
+                clawServo.setPosition(0.0);
             }
             
             //Defining the min and max of the variable speed
