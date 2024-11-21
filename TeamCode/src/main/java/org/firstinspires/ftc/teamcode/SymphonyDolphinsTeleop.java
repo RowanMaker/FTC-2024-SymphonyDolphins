@@ -148,22 +148,55 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             // set position
             if (DU == true){  
                 // wrist up
-                wristServo.setPosition(0.5);
+                wristServo.setPosition(0.3);
+                sleep(500);
             }
+            //else if (DD == true){    
+                // wrist down
+                //wristServo.setDirection(Servo.Direction.REVERSE);
+                //wristServo.setPosition(0.0);
+                //sleep(200);
+            //}
             if (DD == true){    
                 // wrist down
-                wristServo.setPosition(0.2);
+                wristServo.setDirection(Servo.Direction.REVERSE);
+                wristServo.setPosition(0.3);
+                sleep(200);
             }
+            //else if (DU == true){  
+                // wrist up
+                //wristServo.setPosition(0.0);
+                //sleep(200);
+            //}
+            
+            
             // Defining X,B - open/close claw
             // set position
             if(X == true){ 
                 // claw open
-                clawServo.setPosition(0.1);
+                clawServo.setPosition(0.3);
+                sleep(500);
             }
+            else if(B == true){ 
+                // claw close
+                clawServo.setDirection(Servo.Direction.REVERSE);
+                clawServo.setPosition(0.0);
+                sleep(200);
+            }
+            
+            
             if(B == true){ 
                 // claw close
-                clawServo.setPosition(0.0);
+                clawServo.setDirection(Servo.Direction.REVERSE);
+                clawServo.setPosition(0.3);
+                sleep(200);
             }
+            else if(X == true){ 
+                // claw open
+                clawServo.setPosition(0.0);
+                sleep(200);
+            }
+            
             
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
@@ -183,4 +216,3 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             telemetry.update();      
         }
     }
-}
