@@ -146,30 +146,30 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             
             // Defining DU/DD on the D pad- wrist up/down
             // set position
-            if (DU == true){  
+            if(DU == true){ 
                 // wrist up
                 wristServo.setPosition(0.3);
                 sleep(500);
             }
-            //else if (DD == true){    
+            else if(DD == true){ 
                 // wrist down
-                //wristServo.setDirection(Servo.Direction.REVERSE);
-                //wristServo.setPosition(0.0);
-                //sleep(200);
-            //}
-            if (DD == true){    
-                // wrist down
+                wristServo.setDirection(Servo.Direction.REVERSE);
+                wristServo.setPosition(0.0);
+                sleep(200);
+            }
+               
+            if(DU == true){ 
+                // wrist up
                 wristServo.setDirection(Servo.Direction.REVERSE);
                 wristServo.setPosition(0.3);
                 sleep(200);
             }
-            //else if (DU == true){  
-                // wrist up
-                //wristServo.setPosition(0.0);
-                //sleep(200);
-            //}
-            
-            
+            else if(DD == true){ 
+                // wrist down
+                wristServo.setPosition(0.0);
+                sleep(200);
+            }
+             
             // Defining X,B - open/close claw
             // set position
             if(X == true){ 
@@ -183,8 +183,7 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 clawServo.setPosition(0.0);
                 sleep(200);
             }
-            
-            
+               
             if(B == true){ 
                 // claw close
                 clawServo.setDirection(Servo.Direction.REVERSE);
@@ -196,7 +195,6 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 clawServo.setPosition(0.0);
                 sleep(200);
             }
-            
             
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
