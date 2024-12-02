@@ -19,7 +19,6 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
     private DcMotor linActMotor; // port 1
     private DcMotor ShoulderMotor; // port 0
     // defining servos
-    private Servo wristServo; // port 4
     private Servo clawServo; // port 5
 
  // start of OpMode
@@ -32,7 +31,6 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         linActMotor = hardwareMap.get(DcMotor.class, "linAct");
         ShoulderMotor = hardwareMap.get(DcMotor.class, "shoulder");
         
-        wristServo = hardwareMap.get(Servo.class, "wrist");
         clawServo = hardwareMap.get(Servo.class, "claw");
 
   // Defining controller methods
@@ -77,10 +75,10 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         while(opModeIsActive()) {
         // Defining controller buttons and values
             // left and right sticks
-            LX = gamepad1.left_stick_x;
-            LY = gamepad1.left_stick_y * -1;
-            RX = gamepad1.right_stick_x;
-            RY = gamepad1.right_stick_y * -1;
+            LX = gamepad2.left_stick_x;
+            LY = gamepad2.left_stick_y * -1;
+            RX = gamepad2.right_stick_x;
+            RY = gamepad2.right_stick_y * -1;
             // bumpers
             LB = gamepad1.left_bumper;
             RB = gamepad1.right_bumper;
@@ -132,7 +130,7 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             // Defining LT and RT - lin act up/down
             if (RT > 0){
                 // lin act up
-                linActMotor.setPower(0.8);
+                linActMotor.setPower(1);
             }
             if (LT > 0){
                 // lin act down
@@ -143,36 +141,21 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 // if button is not held down lin act stops moving
                 linActMotor.setPower(0);
             }
-            
-            // Defining DU/DD on the D pad- wrist up/down
-            // set position
-            if(DU == true){ 
-                // wrist up
-                wristServo.setPosition(0.3);
-                sleep(500);
-            }
-            else if(DD == true){ 
-                // wrist down
-                wristServo.setDirection(Servo.Direction.REVERSE);
-                wristServo.setPosition(0.0);
-                sleep(200);
-            }
-               
-            if(DU == true){ 
-                // wrist up
-                wristServo.setDirection(Servo.Direction.REVERSE);
-                wristServo.setPosition(0.3);
-                sleep(200);
-            }
-            else if(DD == true){ 
-                // wrist down
-                wristServo.setPosition(0.0);
-                sleep(200);
-            }
              
             // Defining X,B - open/close claw
             // set position
-            if(X == true){ 
+            if (X == true){
+                // claw open
+                clawServo.setPosition(0.5);
+                sleep(200);
+            }
+            if (B == true){
+                // claw close
+                //clawServo.setDirection(Servo.Direction.REVERSE);
+                clawServo.setPosition(0.0);
+                sleep(200);
+            }
+            /*if(X == true){ 
                 // claw open
                 clawServo.setPosition(0.3);
                 sleep(500);
@@ -194,7 +177,7 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
                 // claw open
                 clawServo.setPosition(0.0);
                 sleep(200);
-            }
+            }*/
             
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
@@ -204,13 +187,15 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             speed = (int)(speed * 10) / 10.0;
 
             //Modular speed control for the movement joysticks on the controller
-            frontleftMotor.setPower((LY + RX + LX) * speed);
-            frontrightMotor.setPower((LY - RX - LX) * speed);
-            backleftMotor.setPower((LY + RX - LX) * speed);
-            backrightMotor.setPower((LY - RX + LX) * speed);
+            frontleftMotor.setPower((LY + RX + LX) * speed * -1);
+            frontrightMotor.setPower((LY - RX - LX) * speed * -1);
+            backleftMotor.setPower((LY + RX - LX) * speed * -1);
+            backrightMotor.setPower((LY - RX + LX) * speed * -1);
 
             // displays speed data on the driver hub
             telemetry.addData("Speed: ", speed);
             telemetry.update();      
         }
     }
+}
+
