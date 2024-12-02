@@ -32,6 +32,7 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         ShoulderMotor = hardwareMap.get(DcMotor.class, "shoulder");
         
         clawServo = hardwareMap.get(Servo.class, "claw");
+        clawServo.setPosition(0.6);
 
   // Defining controller methods
         // left and right sticks (x and y axies)
@@ -146,38 +147,16 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
             // set position
             if (X == true){
                 // claw open
-                clawServo.setPosition(0.5);
+                clawServo.setPosition(0.7);
                 sleep(200);
             }
+            
             if (B == true){
                 // claw close
                 //clawServo.setDirection(Servo.Direction.REVERSE);
-                clawServo.setPosition(0.0);
+                clawServo.setPosition(0.6);
                 sleep(200);
             }
-            /*if(X == true){ 
-                // claw open
-                clawServo.setPosition(0.3);
-                sleep(500);
-            }
-            else if(B == true){ 
-                // claw close
-                clawServo.setDirection(Servo.Direction.REVERSE);
-                clawServo.setPosition(0.0);
-                sleep(200);
-            }
-               
-            if(B == true){ 
-                // claw close
-                clawServo.setDirection(Servo.Direction.REVERSE);
-                clawServo.setPosition(0.3);
-                sleep(200);
-            }
-            else if(X == true){ 
-                // claw open
-                clawServo.setPosition(0.0);
-                sleep(200);
-            }*/
             
             //Defining the min and max of the variable speed
             speed = Math.min(speed, 1);
@@ -198,4 +177,3 @@ public class SymphonyDolphinsTeleOp extends LinearOpMode {
         }
     }
 }
-
