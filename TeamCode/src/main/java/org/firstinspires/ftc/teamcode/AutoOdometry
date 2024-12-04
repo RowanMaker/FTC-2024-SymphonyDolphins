@@ -105,7 +105,6 @@ X, Y, Theta are the coordinates on the field and the heading of the robot
 */
 
 // XyhVector is a tuple (x,y,h) where h is the heading of the robot
-
 public XyhVector START_POS = new XyhVector(x: 213, y: 102, Math.toRadians(-174));
 pubic XyhVector pos = new XyhVector(START_POS);
 
@@ -131,6 +130,13 @@ public void odometry() {
   pos.x +=dx * Math.cos(theta) - dy * Math.sin(theta);
   pos.y += dx * Math.sin(theta) + dy * Math.cos(theta);
   pos.h += dtheta; 
+
+  // limit theta to +/- 180 degrees:
+  // posh.h = pos.h % (2.0 * Math.PI);
+  // if ( pos.h > Math.PI ) posh.h -= 2.0 * Math.PI;
+  // if ( pos.h < -Math.PI ) posh.h += 2.0 * Math.PI;
+}
+
 
 
 
