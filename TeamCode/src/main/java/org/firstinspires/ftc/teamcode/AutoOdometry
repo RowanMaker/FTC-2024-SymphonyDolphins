@@ -1,3 +1,4 @@
+// package org.firstinspires.ftc.aperture.robot;
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -11,16 +12,10 @@ public class AutoOdometry {
   public static final Double TRIGGER_THRESHOLD = 0.5; // gamepad trigger
 
   // drive base motors
-  public DcMotor frontrightMotor; // port 0
-  public DcMotor backrightMotor; // port 1
-  public DcMotor backleftMotor; // port 2
-  public DcMotor frontleftMotor; // port 3
-
-  // manipulator motors/servos 
-  public DcMotor linActMotor; // port 1
-  public DcMotor ShoulderMotor; // port 0
-  public Servo wristServo; // port ??
-  public Servo clawServo; // port ??
+  private CRServo backleftMotor; // port 0
+  private CRServo frontleftMotor; // port 1
+  private CRServo backrightMotor; // port 2
+  private CRServo frontrightMotor; // port 3
 
   // odometers
   public DcMotor encoderLeft;
@@ -28,7 +23,88 @@ public class AutoOdometry {
   public DcMotor encoderAux;
 
   private HardwareMap hardwareMap;
-  
+
+  public RobotHardwareEssentials(HardwareMap aHardwareMap) {
+    hardwareMap = aHardwareMap;
+
+    // configure the drive motors
+    backleftMotor = hardwareMap.get(CRServo.class, "leftBackDrive");
+    backleftMotor.setDirection(DcMotor.Direction.FORWARD);
+    backleftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    backleftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+    frontleftMotor = hardwareMap.get(CRServo.class, "leftFrontDrive");
+    frontleftMotor.setDirection(DcMotor.Direction.FORWARD);
+    frontleftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    frontleftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+    backrightMotor = hardwareMap.get(CRServo.class, "rightBackDrive");
+    backrightMotor.setDirection(DcMotor.Direction.FORWARD);
+    backrightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    backrightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+    frontrightMotor = hardwareMap.get(CRServo.class, "rightFrontDrive");
+    frontrightMotor.setDirection(DcMotor.Direction.FORWARD);
+    frontrightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    frontrightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+    // shadow the motors with the odo encoders
+    encoderLeft = backleftMotor;
+    encoderRight = backrightMotor;
+    encoderAux = frontrightMotor;
+
+    stop();
+    resetDriveEncoders();
+
+}
+
+public void resetDriveEncoders() {
+
+  backleftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  backleftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+  frontleftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  frontleftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+  backrightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  backrightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+  frontrightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  frontrightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+}
+
+public void stop() {
+  backleftMotor.setPower(0);
+  frontleftMotor.setPower(0);
+  backrightMotor.setPower(0);
+  frontrightMotor.setPower(0);
+}
+
+// constants that define the geometry of the robot:
+final static double L =    // distance between encoder 1 and 2 in cm
+final static double B =    // distance between the midpoint of encoder 1 and 2 and encoder 3
+final static double R = 9.6 // wheel radius in cm
+final static double N = 2000  // encoder ticks per revolution, REV encoder
+
+// keep track of the odometry encoders between updates
+public int currentRightPosition = 0;
+public int currentLeftPosition = 0;
+public int currentAuxPosition = 0;
+
+private int oldRightPosition = 0;
+private int oldLeftPosition = 0;
+private int oldAuxPosition = 0;
+
+/* Odometry notes
+
+n1, n2, n3 are encoder values for the left, right and back (aux) amni-wheels
+dn1, dn2, dn3 are the differences of encoder values between two reads
+dx, dy, dtheta describe the robot movement between two reads (in robot coordinates)
+X, Y, Theta are the coordinates on the field and the heading of the robot
+
+*/
+
+// XyhVector is a tuple (x,y,h) where h is the heading of the robot
 
 
 
