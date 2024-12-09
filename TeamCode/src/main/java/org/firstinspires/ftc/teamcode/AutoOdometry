@@ -1,4 +1,4 @@
-// package org.firstinspires.ftc.aperture.robot;
+t// package org.firstinspires.ftc.aperture.robot;
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class AutoOdometry {
+public class AutoOdometry extends LinearOpMode {
   // constants
   public static final Double TRIGGER_THRESHOLD = 0.5; // gamepad trigger
 
